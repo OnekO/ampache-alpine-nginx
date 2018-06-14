@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+    ampache:
+        build: . 
+        container_name: "ampache"
+        environment:
+            - VIRTUAL_HOST=ampache.lan
+            - MYSQL_HOST=db
+            - MYSQL_USER=ampache
+            - MYSQL_PASSWORD=ampache
+            - MYSQL_PORT=3306
+        volumes:
+            - ./data/media:/media
+        ports:
+            - "10880:80"
+            - "10843:443"
